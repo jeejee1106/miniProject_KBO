@@ -1,15 +1,13 @@
 package KBOJDBC;
 
-import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,35 +15,33 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class PlayerAddForm extends JFrame implements ActionListener{
-//	PlayerImage playerImage = new PlayerImage(); //캔버스
+public class playerUpdateForm extends JFrame implements ActionListener{
+
 	KBO_DBModel dbModel = new KBO_DBModel();
-	
+
 	Font font1 = new Font("휴먼둥근헤드라인", 0, 20); //글씨체, 효과(진하게, 기울기), 크기
 	Font font2 = new Font("맑은 고딕", 0, 15); //글씨체, 효과(진하게, 기울기), 크기
 
 	JLabel lbTitle, lbTeam, lbName, lbBacknum, lbPosition, lbBirth, lbPhoto;
 	JTextField tfTeam, tfName, tfBacknum, tfPosition, tfBirth;
-	JButton btnImage, btnInsert;
+	JButton btnImage, btnUpdate;
 
 	String imageName;
 
 
 
-	public PlayerAddForm() {
-		super("선수 등록");
+	public playerUpdateForm() {
+		super("선수정보수정");
 		this.setBounds(900, 100, 300, 470);
 		this.setDesign();
 //		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 
-
-
 	private void setDesign() {
 		this.setLayout(null);
-		
-		lbTitle = new JLabel("<선수 정보 입력>", JLabel.CENTER);
+
+		lbTitle = new JLabel("<변경할 선수 정보 입력>", JLabel.CENTER);
 		lbTitle.setBounds(10, 10, 260, 50);
 		lbTitle.setFont(font1);
 		this.add(lbTitle);
@@ -94,7 +90,7 @@ public class PlayerAddForm extends JFrame implements ActionListener{
 		tfBirth = new JTextField();
 		tfBirth.setBounds(90, 230, 100, 30);
 		this.add(tfBirth);
-		
+
 		//사진경로 라벨
 		lbPhoto = new JLabel();
 		lbPhoto.setBounds(30, 310, 220, 45);
@@ -106,67 +102,41 @@ public class PlayerAddForm extends JFrame implements ActionListener{
 		btnImage.addActionListener(this);
 		this.add(btnImage);
 
-		btnInsert = new JButton("등록하기");
-		btnInsert.setBounds(90, 370, 100, 30);
-		btnInsert.addActionListener(this);
-		this.add(btnInsert);
-		
-//		playerImage.setBounds(90, 320, 100, 100);
-//		playerImage.setBackground(Color.black);
-//		this.add(playerImage);
+		btnUpdate = new JButton("수정하기");
+		btnUpdate.setBounds(90, 370, 100, 30);
+		btnUpdate.addActionListener(this);
+		this.add(btnUpdate);
+
 	}
 
-//	class PlayerImage extends Canvas {
-//		@Override
-//		public void paint(Graphics g) {
-//			super.paint(g);
-//			if(imageName!=null) {
-//				Image image = new ImageIcon(imageName).getImage();
-//				g.drawImage(image, 0, 0, 100, 100, this);
-//				//playerImage.setBounds(90, 320, 100, 100);여기서 만들어진 위치에 사진을 넣겠다. 90,320으로 만들어진 이미지액자 안에 이미지의 시작점을 모서리 끝부터!(0,0)!!!!!!!!
-//			}
-//		}
-//	}
-
-
-//	public static void main(String[] args) {
-//		PlayerAddForm ex = new PlayerAddForm();
-//	}
+	public static void main(String[] args) {
+		playerUpdateForm ex = new playerUpdateForm();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
-			if(ob==btnImage) {
-				FileDialog dlg = new FileDialog(this, "이미지 가져오기", FileDialog.LOAD); //파일을 가져오는 그 창 뜨는 코드
-				dlg.setVisible(true); //그 창이 보이게!!!
-				//취소 누르면 메서드 종료
-				if(dlg.getDirectory()==null) {
-					return;
-				}
-				imageName = dlg.getDirectory() + dlg.getFile();
-				lbPhoto.setText(imageName);
-//				playerImage.repaint();
-		} else if(ob==btnInsert) {
+		if(ob==btnImage) {
+			FileDialog dlg = new FileDialog(this, "이미지 가져오기", FileDialog.LOAD); //파일을 가져오는 그 창 뜨는 코드
+			dlg.setVisible(true); //그 창이 보이게!!!
+			//취소 누르면 메서드 종료
+			if(dlg.getDirectory()==null) {
+				return;
+			}
+			imageName = dlg.getDirectory() + dlg.getFile();
+			lbPhoto.setText(imageName);
+		
+		} else if(ob==btnUpdate) {
 			KBOPlayerDTO dto = new KBOPlayerDTO();
-			
 			dto.setTeam(tfTeam.getText());
 			dto.setName(tfName.getText());
 			dto.setBacknum(Integer.parseInt(tfBacknum.getText()));
 			dto.setPosition(tfPosition.getText());
-			dto.setBirth(tfBirth.getText());
-			dto.setPhoto(imageName);
+			dto.setPhoto(lbPhoto.getText());
 			
-			dbModel.insertPlayer(dto);
-			
-			JOptionPane.showMessageDialog(this, "선수 등록이 완료되었습니다.");
-			
-			tfTeam.setText("");
-			tfName.setText("");
-			tfBacknum.setText("");
-			tfPosition.setText("");
-			tfBirth.setText("");
-			lbPhoto.setText("");
-			
+			dbModel.updatePlayer(dto);
+			JOptionPane.showMessageDialog(this, "선수정보가 변경되었습니다.");
 		}
+
 	}
 }

@@ -13,7 +13,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 public class KBOMain extends JFrame implements ActionListener{
-	TeamInfo teamInfo0 = new TeamInfo();
+	
+	TeamInfo teamInfo0;
 	TeamInfo teamInfo;
 	
 	JLabel title, subTitle;
@@ -23,7 +24,7 @@ public class KBOMain extends JFrame implements ActionListener{
 	Font font1 = new Font("휴먼둥근헤드라인", 0, 30); //글씨체, 효과(진하게, 기울기), 크기
 	
 	public KBOMain(){
-		super("KBO 관리자 메뉴");
+		super("KBO 선수 프로필");
 		this.setBounds(200, 60, 1150, 700);
 		this.getContentPane().setBackground(Color.white);
 		this.setDesign();
@@ -35,7 +36,7 @@ public class KBOMain extends JFrame implements ActionListener{
 	public void setDesign() {
 		this.setLayout(null);
 		
-		title = new JLabel("[KBO 선수관리자 모드]", JLabel.CENTER);
+		title = new JLabel("[KBO 구단별 선수 프로필]", JLabel.CENTER);
 		title.setBounds(100, 50, 900, 30);
 //		title.setBorder(new LineBorder(Color.black));
 		title.setFont(font1);
@@ -44,7 +45,7 @@ public class KBOMain extends JFrame implements ActionListener{
 		subTitle = new JLabel("구단을 선택해주세요");
 		this.add(subTitle);
 		
-		btnAllPlayer = new JButton("모든 선수보기");
+		btnAllPlayer = new JButton("선수 관리자모드");
 		btnAllPlayer.setBounds(900, 80, 150, 30);
 		this.add(btnAllPlayer);
 		btnAllPlayer.addActionListener(this);
@@ -60,56 +61,83 @@ public class KBOMain extends JFrame implements ActionListener{
 		btnNC.addActionListener(this);
 		
 		ImageIcon doosan = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\DOOSAN.png");
+		ImageIcon changeDs = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeDOOSAN.png");
 		btnDS = new JButton(doosan);
+		btnDS.setRolloverIcon(changeDs);
 		btnDS.setBounds(300, 180, 150, 150);
+		btnDS.setBorderPainted(false);
 		this.add(btnDS);
 		btnDS.addActionListener(this);
 		
 		ImageIcon kt = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\KT.png");
+		ImageIcon changeKt = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeKT.png");
 		btnKT = new JButton(kt);
+		btnKT.setRolloverIcon(changeKt);
 		btnKT.setBounds(500, 180, 150, 150);
+		btnKT.setBorderPainted(false);
 		this.add(btnKT);
 		btnKT.addActionListener(this);
 		
 		ImageIcon lg = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\LG.png");
+		ImageIcon changeLg = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeLG.png");
 		btnLG = new JButton(lg);
+		btnLG.setRolloverIcon(changeLg);
 		btnLG.setBounds(700, 180, 150, 150);
+		btnLG.setBorderPainted(false);
 		this.add(btnLG);
 		btnLG.addActionListener(this);
 		
 		ImageIcon kiwoom = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\KIWOOM.png");
+		ImageIcon changeKw = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeKIWOOM.png");
 		btnKU = new JButton(kiwoom);
+		btnKU.setRolloverIcon(changeKw);
 		btnKU.setBounds(900, 180, 150, 150);
+		btnKU.setBorderPainted(false);
 		this.add(btnKU);
 		btnKU.addActionListener(this);
 		
 		ImageIcon kia = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\KIA.png");
+		ImageIcon changeKia = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeKIA.png");
 		btnKIA = new JButton(kia);
+		btnKIA.setRolloverIcon(changeKia);
 		btnKIA.setBounds(100, 400, 150, 150);
+		btnKIA.setBorderPainted(false);
 		this.add(btnKIA);
 		btnKIA.addActionListener(this);
 		
 		ImageIcon lotte = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\LOTTE.png");
+		ImageIcon changeLt = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeLOTTE.png");
 		btnLT = new JButton(lotte);
+		btnLT.setRolloverIcon(changeLt);
 		btnLT.setBounds(300, 400, 150, 150);
+		btnLT.setBorderPainted(false);
 		this.add(btnLT);
 		btnLT.addActionListener(this);
 		
 		ImageIcon samsung = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\SAMSUNG.png");
+		ImageIcon changeSs = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeSAMSUNG.png");
 		btnSS = new JButton(samsung);
+		btnSS.setRolloverIcon(changeSs);
 		btnSS.setBounds(500, 400, 150, 150);
+		btnSS.setBorderPainted(false);
 		this.add(btnSS);
 		btnSS.addActionListener(this);
 		
 		ImageIcon ssg = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\SSG.png");
+		ImageIcon changeSsg = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeSSG.png");
 		btnSSG = new JButton(ssg);
+		btnSSG.setRolloverIcon(changeSsg);
 		btnSSG.setBounds(700, 400, 150, 150);
+		btnSSG.setBorderPainted(false);
 		this.add(btnSSG);
 		btnSSG.addActionListener(this);
 		
 		ImageIcon hanwha = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\HANWHA.png");
+		ImageIcon changeHh = new ImageIcon("C:\\Users\\PC\\Desktop\\study\\image\\KBOProject\\Logo\\ChangeHANWHA.png");
 		btnHH = new JButton(hanwha);
+		btnHH.setRolloverIcon(changeHh);
 		btnHH.setBounds(900, 400, 150, 150);
+		btnHH.setBorderPainted(false);
 		this.add(btnHH);
 		btnHH.addActionListener(this);
 		
@@ -126,39 +154,37 @@ public class KBOMain extends JFrame implements ActionListener{
 		Object ob = e.getSource();
 		
 		if(ob==btnNC) {
-			String name = "NC";
+			String name = "NC Dinos";
 			new TeamInfo(name).setVisible(true);
-			teamInfo0.teamNc();
 		} else if(ob==btnDS) {
-			String name = "두산";
+			String name = "DOOSAN Bears";
 			new TeamInfo(name).setVisible(true);
-//			teamInfo(name).teamDs();
 		} else if(ob==btnKT) {
-			teamInfo.setVisible(true);
-			teamInfo.teamKt();
+			String name = "KT Wiz";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnLG) {
-			teamInfo.setVisible(true);
-			teamInfo.teamLg();
+			String name = "LG Twins";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnKU) {
-			teamInfo.setVisible(true);
-			teamInfo.teamKu();
+			String name = "KIWOOM Heroes";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnKIA) {
-			teamInfo.setVisible(true);
-			teamInfo.teamKia();
+			String name = "KIA Tigers";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnLT) {
-			teamInfo.setVisible(true);
-			teamInfo.teamLt();
+			String name = "LOTTE Giants";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnSS) {
-			teamInfo.setVisible(true);
-			teamInfo.teamSs();
+			String name = "SAMSUNG Lions";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnSSG) {
-			teamInfo.setVisible(true);
-			teamInfo.teamSsg();
+			String name = "SSG Landers";
+			new TeamInfo(name).setVisible(true);
 		} else if(ob==btnHH) {
-			teamInfo.setVisible(true);
-			teamInfo.teamHh();
+			String name = "HANWHA Eagles";
+			new TeamInfo(name).setVisible(true);
 		} else if (ob==btnAllPlayer) {
-			AllPlayer ap = new AllPlayer();
+			AdminMode am = new AdminMode();
 		}
 		
 	}

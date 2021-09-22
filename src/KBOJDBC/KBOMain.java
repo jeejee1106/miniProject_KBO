@@ -154,35 +154,35 @@ public class KBOMain extends JFrame implements ActionListener{
 		Object ob = e.getSource();
 		
 		if(ob==btnNC) {
-			String name = "NC Dinos";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "NC Dinos";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnDS) {
-			String name = "DOOSAN Bears";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "DOOSAN Bears";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnKT) {
-			String name = "KT Wiz";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "KT Wiz";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnLG) {
-			String name = "LG Twins";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "LG Twins";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnKU) {
-			String name = "KIWOOM Heroes";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "KIWOOM Heroes";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnKIA) {
-			String name = "KIA Tigers";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "KIA Tigers";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnLT) {
-			String name = "LOTTE Giants";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "LOTTE Giants";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnSS) {
-			String name = "SAMSUNG Lions";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "SAMSUNG Lions";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnSSG) {
-			String name = "SSG Landers";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "SSG Landers";
+			new TeamInfo(teamName).setVisible(true);
 		} else if(ob==btnHH) {
-			String name = "HANWHA Eagles";
-			new TeamInfo(name).setVisible(true);
+			String teamName = "HANWHA Eagles";
+			new TeamInfo(teamName).setVisible(true);
 		} else if (ob==btnAllPlayer) {
 			AdminMode am = new AdminMode();
 		}

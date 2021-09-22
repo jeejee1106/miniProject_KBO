@@ -111,23 +111,7 @@ public class PlayerAddForm extends JFrame implements ActionListener{
 		btnInsert.addActionListener(this);
 		this.add(btnInsert);
 		
-//		playerImage.setBounds(90, 320, 100, 100);
-//		playerImage.setBackground(Color.black);
-//		this.add(playerImage);
 	}
-
-//	class PlayerImage extends Canvas {
-//		@Override
-//		public void paint(Graphics g) {
-//			super.paint(g);
-//			if(imageName!=null) {
-//				Image image = new ImageIcon(imageName).getImage();
-//				g.drawImage(image, 0, 0, 100, 100, this);
-//				//playerImage.setBounds(90, 320, 100, 100);여기서 만들어진 위치에 사진을 넣겠다. 90,320으로 만들어진 이미지액자 안에 이미지의 시작점을 모서리 끝부터!(0,0)!!!!!!!!
-//			}
-//		}
-//	}
-
 
 //	public static void main(String[] args) {
 //		PlayerAddForm ex = new PlayerAddForm();
@@ -145,7 +129,6 @@ public class PlayerAddForm extends JFrame implements ActionListener{
 				}
 				imageName = dlg.getDirectory() + dlg.getFile();
 				lbPhoto.setText(imageName);
-//				playerImage.repaint();
 		} else if(ob==btnInsert) {
 			KBOPlayerDTO dto = new KBOPlayerDTO();
 			

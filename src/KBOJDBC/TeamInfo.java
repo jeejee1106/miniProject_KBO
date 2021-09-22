@@ -41,9 +41,9 @@ public class TeamInfo extends JFrame{
 		
 	}
 	
-	public TeamInfo(String name) {
-		super(name + " 선수단");
-		teamName=name;
+	public TeamInfo(String teamName) {
+		super(teamName + " 선수단");
+		this.teamName=teamName;
 		this.setBounds(400, 70, 500, 650);
 		this.setDesign();
 		this.getContentPane().setBackground(Color.white);
@@ -109,11 +109,6 @@ public class TeamInfo extends JFrame{
 		//콤보박스 초기값 코드
 		String firstname = cbPlayerName.getSelectedItem().toString();
 		playerdto = dbModel.getPlayerProfile(firstname);
-//		lbPBacknum.setText(String.valueOf(playerdto.getBacknum()));
-//		lbPName.setText(playerdto.getName());
-//		lbPTeam.setText(playerdto.getTeam());
-//		lbPPosition.setText(playerdto.getPosition());
-//		lbPBirth.setText(playerdto.getBirth());
 		imageName = playerdto.getPhoto();
 		profileDraw.repaint();
 		
@@ -132,20 +127,9 @@ public class TeamInfo extends JFrame{
 				imageName = playerdto.getPhoto();
 				profileDraw.repaint();
 				
-				
-				
-//				team = playerdto.getTeam();
-//				name = playerdto.getName();
-//				backnum = playerdto.getBacknum();
-//				position = playerdto.getPosition();
-//				birth = playerdto.getBirth();
-//				photo = playerdto.getPhoto();
 				repaint();
-				
-				
 			}
 		});
-		
 	}
 	
 	class playerProfile extends Canvas{
@@ -159,69 +143,4 @@ public class TeamInfo extends JFrame{
 		}
 	}
 
-//	public void cbPlayer(String t) {
-//		Object[] playerName = dbModel.getNameArray(team);
-//		cbPlayerName = new JComboBox<Object>(playerName);
-//		cbPlayerName.setBounds(100, 60, 100, 20);
-//		this.add(cbPlayerName);
-//	}
-	
-	public void teamNc() {
-//		Connection conn = db.getLocalOracle();
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		String sql = "팀중 NC Dinos만 나오도록 쿼리 짜기";
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			db.dbClose(rs, pstmt, conn);
-//		}
-		
-		
-	}
-
-//	public void teamDs() {
-//		
-//	}
-//
-//	public void teamKt() {
-//		
-//	}
-//
-//	public void teamLg() {
-//		
-//	}
-//
-//	public void teamKu() {
-//		
-//	}
-//
-//	public void teamKia() {
-//		
-//	}
-//
-//	public void teamLt() {
-//		
-//	}
-//
-//	public void teamSs() {
-//		
-//	}
-//
-//	public void teamSsg() {
-//		
-//	}
-//
-//	public void teamHh() {
-//		
-//	}
-	
-//	public static void main(String[] args) {
-//		String name = "테스트 창";
-//		new TeamInfo(name);
-//		
-//	}
 }
